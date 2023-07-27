@@ -1,15 +1,17 @@
 # Docker Network Simulator
 
-## Requirements
+## Install
 
-* Python 3 installed
-* PyYaml installed (see: [documentation](http://pyyaml.org/wiki/PyYAML))
-* Docker with Docker-compose installed
+```shell
+nix shell "github:csicar/docker-network-simulator"
+```
+
+* And have Docker with Docker-compose installed
 
 ## Example-Run:
 
 ```
-python main.py examples/example-containers.yaml
+docker-network-simulator examples/example-containers.yaml
 ```
 
 ## YAML-File
