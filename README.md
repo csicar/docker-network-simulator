@@ -2,7 +2,7 @@
 
 ## Requirements
 
-* Python 2.7 installed
+* Python 3 installed
 * PyYaml installed (see: [documentation](http://pyyaml.org/wiki/PyYAML))
 * Docker with Docker-compose installed
 

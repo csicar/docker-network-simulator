@@ -27,17 +27,17 @@ class Network(object):
         self.connectedContainer.pop(containerName, None)
 
     def getConnectedContainer(self):
-        return self.connectedContainer.keys()
+        return list(self.connectedContainer.keys())
 
     def getInterfaceNameOfConnectedContainer(self, containerName):
         return self.connectedContainer[containerName]
 
     def printNetwork(self):
-        print "Network: " + self.key
-        print "Network-Name: " + self.networkName
-        print "Connected: "
+        print("Network: " + self.key)
+        print("Network-Name: " + self.networkName)
+        print("Connected: ")
         for container in self.connectedContainer:
-            print container+" : "+self.connectedContainer[container]
+            print(container+" : "+self.connectedContainer[container])
 
 def join(actionObject, dockerComposeProjectName):
     containerList = actionObject["container"]
@@ -75,7 +75,7 @@ def deleteAllNetworks():
 def delay(actionObject, dockerComposeProjectName):
     time = actionObject["time"]
     if time is None:
-        print "You have to set a time"
+        print("You have to set a time")
         return 1
     arguments = [time]
 
@@ -111,16 +111,16 @@ def loss(actionObject, dockerComposeProjectName):
 
 def connect(containerList, dockerComposeProjectName, internal):
     containerList = convertToContainerNames(containerList, dockerComposeProjectName)
-    print "connect "+str(containerList)
+    print("connect "+str(containerList))
     mapKey = getMapKey(containerList)
     if mapKey in networks:
-        print "These containers are already connected"
+        print("These containers are already connected")
         return 1
 
     # get network name
     networkName = createNetwork(internal)
     if networkName == None:
-        print "Could not create network"
+        print("Could not create network")
         return 1
 
     networks[mapKey] = Network(mapKey, networkName)
@@ -141,16 +141,16 @@ def connect(containerList, dockerComposeProjectName, internal):
         exitCode = max(exitCode, localExitCode)
 
     if exitCode != 0:
-        print "Could not connect all containers to the network"
+        print("Could not connect all containers to the network")
 
     return exitCode
 
 def disconnect(containerList, dockerComposeProjectName):
     containerList = convertToContainerNames(containerList, dockerComposeProjectName)
-    print "disconnect "+str(containerList)
+    print("disconnect "+str(containerList))
     mapKey = getMapKey(containerList)
     if mapKey not in networks:
-        print "This network does not exists"
+        print("This network does not exists")
         return 1
 
     network = networks[mapKey]
@@ -163,12 +163,12 @@ def disconnect(containerList, dockerComposeProjectName):
         exitCode = max(exitCode, localExitCode)
 
     if exitCode != 0:
-        print "Could not disconnect all containers from the network"
+        print("Could not disconnect all containers from the network")
         return 1
 
     exitCode = deleteNetwork(network.getNetworkName())
     if exitCode != 0:
-        print "Cloud not delete the network"
+        print("Cloud not delete the network")
     else:
         networks.pop(mapKey, None)
     return exitCode

@@ -21,22 +21,22 @@ class eventWorker (threading.Thread):
                         pass
 
         if "seconds" in self.eventObject:
-            print "sleep for " + str(self.eventObject["seconds"]) + " seconds"
+            print("sleep for " + str(self.eventObject["seconds"]) + " seconds")
             time.sleep(int(self.eventObject["seconds"]))
 
         if "command" in self.eventObject:
-            print "execute command: " + self.eventObject["command"]
+            print("execute command: " + self.eventObject["command"])
             exitCode = call(self.eventObject["command"], shell=True)
             if exitCode != 0:
-                print "command exited with exit code " + str(exitCode) + ". Abort."
+                print("command exited with exit code " + str(exitCode) + ". Abort.")
                 return exitCode
 
         if "commands" in self.eventObject:
             for command in self.eventObject["commands"]:
-                print "execute command: " + command
+                print("execute command: " + command)
                 exitCode = call(command, shell=True)
                 if exitCode != 0:
-                    print "command exited with exit code " + str(exitCode) + ". Abort."
+                    print("command exited with exit code " + str(exitCode) + ". Abort.")
                     return exitCode
 
         if "do" in self.eventObject:
@@ -44,5 +44,5 @@ class eventWorker (threading.Thread):
             for action in doObject:
                 exitCode = executeAction(action, doObject[action], self.dockerComposeFilename, self.dockerComposeProjectName)
                 if exitCode != 0:
-                    print action + " exited with exit code " + str(exitCode)
+                    print(action + " exited with exit code " + str(exitCode))
         self.threadFinishedMap[self.eventKey] = True

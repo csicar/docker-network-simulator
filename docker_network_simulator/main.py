@@ -41,7 +41,7 @@ call(["docker-compose", "-p", dockerComposeProjectName, "-f", dockerComposeFilen
 
 
 # Insert event management here:
-print "##### ##### ##### ##### ##### #####\n##### ### EventManagement ##### ###\n##### ##### ##### ##### ##### #####"
+print("##### ##### ##### ##### ##### #####\n##### ### EventManagement ##### ###\n##### ##### ##### ##### ##### #####")
 events = yamlConfig['events']
 
 threads = {}
@@ -60,8 +60,8 @@ for thread in threads:
 for thread in threads:
     threads[thread].join()
 
-print "Finished..."
-print "##### ##### ##### ##### ##### #####\n##### ### EventManagement ##### ###\n##### ##### ##### ##### ##### #####"
+print("Finished...")
+print("##### ##### ##### ##### ##### #####\n##### ### EventManagement ##### ###\n##### ##### ##### ##### ##### #####")
 # Stop docker compose and delete file
 call(["docker-compose", "-p", dockerComposeProjectName, "-f", dockerComposeFilename, "down"])
 os.remove(dockerComposeFilename)

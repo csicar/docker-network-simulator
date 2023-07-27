@@ -6,7 +6,7 @@ current_milli_time = lambda: int(round(time.time() * 1000))
 def startTimer(actionObject):
     for identifier in actionObject:
         currentTimers[identifier] = current_milli_time()
-        print "started timer "+identifier
+        print("started timer "+identifier)
     return 0
 
 def stopTimer(actionObject):
@@ -24,8 +24,8 @@ def printTimer(actionObject):
 
 def printSingleTimer(timerIdentifier):
     if timerIdentifier not in currentTimers:
-        print "Timer " + timerIdentifier + " not found!"
+        print("Timer " + timerIdentifier + " not found!")
         return 1
     else:
-        print timerIdentifier + ": " + str((current_milli_time() - currentTimers[timerIdentifier]))
+        print(timerIdentifier + ": " + str((current_milli_time() - currentTimers[timerIdentifier])))
         return 0
