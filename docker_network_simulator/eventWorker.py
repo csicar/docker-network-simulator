@@ -1,7 +1,7 @@
 import threading
 import time
 from subprocess import call
-from executeAction import executeAction
+from .executeAction import executeAction
 
 class eventWorker (threading.Thread):
     def __init__(self, eventKey, eventObject, dockerComposeFilename, dockerComposeProjectName, threadMap, threadFinishedMap):

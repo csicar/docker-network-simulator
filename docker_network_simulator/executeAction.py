@@ -1,6 +1,6 @@
-from actions.containerActions import startContainer, stopContainer, restartContainer
-from actions.timerActions import startTimer, stopTimer, printTimer
-from actions.networkActions import join, cut, delay, duplicate, corrupt, loss
+from .actions.containerActions import startContainer, stopContainer, restartContainer
+from .actions.timerActions import startTimer, stopTimer, printTimer
+from .actions.networkActions import join, cut, delay, duplicate, corrupt, loss
 
 def executeAction(action, actionObject, dockerComposeFilename, dockerComposeProjectName):
     if action == "join":
