@@ -202,7 +202,7 @@ def getNetworkInterfaces(containerName):
 def convertToContainerNames(containerList, dockerComposeProjectName):
     newList = list()
     for container in containerList:
-        newList.append(dockerComposeProjectName + "_" + container + "_1")
+        newList.append(dockerComposeProjectName + "-" + container + "-1")
     return newList
 
 def getMapKey(containerList):

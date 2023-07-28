@@ -27,11 +27,11 @@ def run():
         yamlString = fileContent.read()
 
     # Parse YAML
-    yamlConfig = yaml.load(yamlString)
+    yamlConfig = yaml.load(yamlString, Loader=yaml.CLoader)
 
     # Write Docker Compose File
     now = datetime.datetime.now()
-    dateHash = hashlib.sha256(str(now)).hexdigest()
+    dateHash = hashlib.sha256(str(now).encode('utf-8')).hexdigest()
     dockerComposeFilename = str(dateHash)+".yaml"
     dockerComposeProjectName = "networksimulator"
     with open(dockerComposeFilename, 'w+') as filePointer:
