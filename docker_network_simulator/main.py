@@ -27,7 +27,7 @@ def run():
         yamlString = fileContent.read()
 
     # Parse YAML
-    yamlConfig = yaml.load(yamlString, Loader=yaml.CLoader)
+    yamlConfig = yaml.load(yamlString, Loader=yaml.Loader)
 
     # Write Docker Compose File
     now = datetime.datetime.now()
